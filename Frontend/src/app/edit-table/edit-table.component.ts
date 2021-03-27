@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../services/get-data.service';
 import { RegisterService } from '../services/register.service';
+import Swal from 'sweetalert2'
+
+
 
 @Component({
   selector: 'app-edit-table',
@@ -48,6 +51,8 @@ export class EditTableComponent implements OnInit {
       res=>
       {
          Employee.isEdit=false;
+         //Swal.fire('Updated!')
+         Swal.fire("Good job!", "Record Updatec Successfully!", "success");
       },
       err=>
       {
@@ -57,18 +62,47 @@ export class EditTableComponent implements OnInit {
   }
   delete(Employee)
   {
-    this._service.deleteEmployee(Employee).subscribe
-    (
-      res=>
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this imaginary file!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) 
       {
-         alert(res['res'])
-         this.ngOnInit();
-      },
-      err=>
-      {
-        console.log(err)
+
+          this._service.deleteEmployee(Employee).subscribe
+          (
+              res=>
+              {
+                
+                this.ngOnInit();
+              },
+            err=>
+              {
+                console.log(err)
+              }
+          )
+
+        Swal.fire(
+          'Deleted!',
+          'Your imaginary file has been deleted.',
+          'success'
+        )
+      
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
       }
-    )
+    })
+
+    
   }
 
 }
