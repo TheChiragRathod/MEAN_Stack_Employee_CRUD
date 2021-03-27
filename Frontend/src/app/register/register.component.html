@@ -1,0 +1,65 @@
+<div class="m-3 col-md-6">
+<form [formGroup]="RegisterForm" (ngSubmit)="onRegister()">
+    
+    <div class="form-group">
+        <label >Enter Full Name</label>
+        <input formControlName="name" class="form-control" name="name"  placeholder="Enter name">
+    </div>
+
+   <div *ngIf="f.name.invalid && (f.name.touched || f.name.dirty)" class="alert alert-danger">
+        <div *ngIf="f.name.errors.required">Name is required</div>    
+        <div *ngIf="f.name.errors.minlength">Name must be at least 2 characters long.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Enter Email address</label>
+      <input formControlName="email" name="email" class="form-control" placeholder="Enter email">
+    </div>
+
+    <div *ngIf="f.email.invalid && (f.email.touched || f.email.dirty)" class="alert alert-danger">
+      Please enter valid email
+  </div>
+
+    <div class="form-group">
+      <label >Enter Password</label>
+      <input formControlName="password" name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
+    </div>
+    <div *ngIf="f.password.invalid && (f.password.touched || f.password.dirty)" class="alert alert-danger">
+      <div *ngIf="f.password.errors.required">Password is required</div>    
+      <div *ngIf="f.password.errors.minlength">Password must be at least 5 characters long.</div>
+    </div>
+    
+
+    <div class="form-group">
+        <label >Enter city</label>
+        <input formControlName="city" name="city" class="form-control" placeholder="Enter city">
+      </div>
+      <div *ngIf="f.city.invalid && (f.city.touched || f.city.dirty)" class="alert alert-danger">
+        <div *ngIf="f.city.errors.required">City is required</div>    
+        <div *ngIf="f.city.errors.minlength">City must be at least 2 characters long.</div>
+    </div>
+
+
+
+      <div class="form-group">
+        <label >Enter hobby</label>
+        <input formControlName="hobby" name="hobby" class="form-control" placeholder="Enter hobby">
+      </div>
+      <div *ngIf="f.hobby.invalid && (f.hobby.touched || f.hobby.dirty)" class="alert alert-danger">
+        <div *ngIf="f.hobby.errors.required">Hobby is required</div>    
+        <div *ngIf="f.hobby.errors.minlength">Hobby must be at least 2 characters long.</div>
+    </div>
+
+      <div class="form-group">
+        <label >Enter address</label>
+        <input formControlName="address" name="address" class="form-control" placeholder="Enter address">
+      </div>
+      <div *ngIf="f.address.invalid && (f.address.touched || f.address.dirty)" class="alert alert-danger">
+        <div *ngIf="f.address.errors.required">Address is required</div>    
+        <div *ngIf="f.address.errors.minlength">Address must be at least 2 characters long.</div>
+    </div>
+   
+    <button type="submit" [disabled]="RegisterForm.invalid" class="btn btn-primary">Register</button>
+  </form>
+
+</div>

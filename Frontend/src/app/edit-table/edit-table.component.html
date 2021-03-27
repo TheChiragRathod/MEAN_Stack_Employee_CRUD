@@ -1,0 +1,47 @@
+<div class="m-3">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">City</th>
+                
+                <th scope="col">Adddress</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let Employee of Employees">
+            
+                <td>{{Employee._id}}</td>
+                <td>
+                    <div *ngIf="Employee.isEdit">
+                        <input type="text" [(ngModel)]="Employee.name">
+                    </div>
+
+                    <div *ngIf="!Employee.isEdit">
+                        {{Employee.name}}
+                    </div>
+                </td>
+                <td>{{Employee.email}}</td>
+                <td>{{Employee.city}}</td>
+               
+                <td>{{Employee.address}}</td>
+                <td>
+                    <div *ngIf="!Employee.isEdit">
+                        <button class="btn btn-info m-1" (click)="isEdit(Employee)">Edit</button>
+                        <button class="btn btn-danger m-1">Delete</button>
+                    </div>
+
+                    <div *ngIf="Employee.isEdit">
+                        <button class="btn btn-success m-1" (click)="update(Employee)">Update</button>
+                        <button class="btn btn-primary m-1" (click)="cancel(Employee)">Cancel</button>
+                    </div>
+                    
+                </td>
+            </tr>
+            
+            </tbody>
+        </table>
+</div>
