@@ -4,17 +4,18 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">City</th>
-                
+                <th scope="col">Email</th>                    
                 <th scope="col">Adddress</th>
+                <th scope="col">City</th>  
                 <th scope="col">Actions</th>
             </tr>
             </thead>
+
             <tbody>
             <tr *ngFor="let Employee of Employees">
-            
+
                 <td>{{Employee._id}}</td>
+
                 <td>
                     <div *ngIf="Employee.isEdit">
                         <input type="text" [(ngModel)]="Employee.name">
@@ -24,14 +25,44 @@
                         {{Employee.name}}
                     </div>
                 </td>
-                <td>{{Employee.email}}</td>
-                <td>{{Employee.city}}</td>
+
+                <td>
+                    <div *ngIf="Employee.isEdit">
+                        <input type="text" [(ngModel)]="Employee.email">
+                    </div>
+
+                    <div *ngIf="!Employee.isEdit">
+                        {{Employee.email}}
+                    </div>
+                </td>
+                
+                
                
-                <td>{{Employee.address}}</td>
+                <td>
+                    <div *ngIf="Employee.isEdit">
+                        <input type="text" [(ngModel)]="Employee.address">
+                    </div>
+
+                    <div *ngIf="!Employee.isEdit">
+                        {{Employee.address}}
+                    </div>
+                </td>
+
+                <td>
+                    <div *ngIf="Employee.isEdit">
+                        <input type="text" [(ngModel)]="Employee.city">
+                    </div>
+
+                    <div *ngIf="!Employee.isEdit">
+                        {{Employee.city}}
+                    </div>
+                </td>
+                
+                
                 <td>
                     <div *ngIf="!Employee.isEdit">
                         <button class="btn btn-info m-1" (click)="isEdit(Employee)">Edit</button>
-                        <button class="btn btn-danger m-1">Delete</button>
+                        <button class="btn btn-danger m-1" (click)="delete(Employee)">Delete</button>
                     </div>
 
                     <div *ngIf="Employee.isEdit">

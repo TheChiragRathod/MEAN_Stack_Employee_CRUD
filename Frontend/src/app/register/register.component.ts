@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
               'email':new FormControl(null,[Validators.required,Validators.email]),
               'password':new FormControl(null,[Validators.required,Validators.minLength(5)]),         
               'city':new FormControl(null,[Validators.required,Validators.minLength(2)]),
-              'hobby':new FormControl(null,[Validators.required,Validators.minLength(2)]),
+        
               'address':new FormControl(null,[Validators.required,Validators.minLength(2)]),
           }
     );

@@ -88,12 +88,12 @@ router.post("/insemp",async (req,res)=>{
 
 })
 
-router.delete("/delemp/:id",async (req,res)=>{
+router.delete("/delete_emp/:id",async (req,res)=>{
 
     try
     {
         await ModelEmp.deleteOne({_id:req.params.id})
-        res.send("Deleted Successfully...")
+        return res.status(200).send({res:"Success"})
     }
     catch(error)
     {
@@ -107,7 +107,7 @@ router.patch("/emp/:id",async (req,res)=>{
     {
 
         const filter={_id:req.params.id}
-        const update={name:req.body.name}
+        const update={name:req.body.name,email:req.body.email,city:req.body.city,address:req.body.address}
         const emp=await ModelEmp.findOneAndUpdate(filter,update)
       
         return res.status(200).send({error:"Record is updated..."})

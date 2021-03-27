@@ -21,4 +21,9 @@ export class RegisterService {
   {
     return this.http.patch<Employee>("http://localhost:3000/emp/"+data._id,data)
   }
+
+  deleteEmployee(data:Employee):Observable<Employee>
+  {
+    return this.http.delete<Employee>("http://localhost:3000/delete_emp/"+data._id)
+  }
 }

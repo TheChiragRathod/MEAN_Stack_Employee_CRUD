@@ -55,5 +55,20 @@ export class EditTableComponent implements OnInit {
       }
     )
   }
+  delete(Employee)
+  {
+    this._service.deleteEmployee(Employee).subscribe
+    (
+      res=>
+      {
+         alert(res['res'])
+         this.ngOnInit();
+      },
+      err=>
+      {
+        console.log(err)
+      }
+    )
+  }
 
 }
