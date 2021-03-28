@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl, Validators } from '@angular/forms';
 import { RegisterService } from '../services/register.service';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -32,8 +32,8 @@ export class RegisterComponent implements OnInit {
     this._service.registerEmployee(this.RegisterForm.value).subscribe(
       res=>
       {
-          alert("Success")
-          this.RegisterForm.reset()
+        Swal.fire("Good job!", "Registration Successfully Done!", "success");
+        this.RegisterForm.reset()
       },
       err=>
       {
