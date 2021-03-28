@@ -12,7 +12,7 @@
             </thead>
 
             <tbody>
-            <tr *ngFor="let Employee of Employees">
+            <tr *ngFor="let Employee of Employees | paginate:{itemsPerPage:5,currentPage:p  }">
 
                 <td>{{Employee._id}}</td>
 
@@ -73,6 +73,10 @@
                 </td>
             </tr>
             
+
+
+            <!-- Pagination start here -->
+            <pagination-controls (pageChange)="p=$event"></pagination-controls>
             </tbody>
         </table>
 </div>

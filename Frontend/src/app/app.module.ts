@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { EditTableComponent } from './edit-table/edit-table.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   
   ],
   providers: [],

@@ -13,6 +13,7 @@ import Swal from 'sweetalert2'
 
 export class EditTableComponent implements OnInit {
   Employees;
+  p=1;
  
   constructor(private _getData:GetDataService,private _service:RegisterService) { }
   
