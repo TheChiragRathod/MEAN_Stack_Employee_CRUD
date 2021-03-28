@@ -70,8 +70,7 @@ router.post("/insemp",async (req,res)=>{
                 name:req.body.name,
                 email:req.body.email,
                 password:hashedPswd,
-                city:req.body.city,
-               
+                city:req.body.city,   
                 address:req.body.address
             }
         )

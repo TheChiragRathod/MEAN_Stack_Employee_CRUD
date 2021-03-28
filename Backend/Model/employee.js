@@ -26,7 +26,6 @@ const schema = mongoose.Schema(
             require:true,
             minlength:2
         },
-    
         address:
         {
             type:String,
