@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     {
       this.LoginForm.reset()
       localStorage.setItem("employeeToken",res['token'])
-      this._router.navigate(['/'])
+      this._router.navigate(['/employees'])
       alert("success")
       
     },
