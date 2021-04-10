@@ -7,10 +7,10 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" routerLink="">Home <span class="sr-only">(current)</span></a>
-            </li>
-            
+            </li>            
         </ul>
-        <ul class="navbar-nav">
+
+        <ul class="navbar-nav" *ngIf="!this._auth.isLoggedIn()">
             <li class="nav-item">
                 <a class="nav-link" routerLink="/login">Login</a>
             </li>
@@ -18,5 +18,14 @@
                 <a class="nav-link" routerLink="/register">Register</a>
             </li>
         </ul>
+        <ul class="navbar-nav" *ngIf="this._auth.isLoggedIn()">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/employees">Employees</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  (click)="logout()">Logout</a>
+            </li>
+        </ul>
+        
     </div>
 </nav>

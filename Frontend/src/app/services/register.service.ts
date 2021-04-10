@@ -41,7 +41,7 @@ export class RegisterService {
 
   logout()
   {
-    if(localStorage.removeItem("employeeToken")==null)
-      this._router.navigate(['/login'])    
+    localStorage.removeItem("employeeToken");
+    this._router.navigate(['/login'])    
   }
 }
