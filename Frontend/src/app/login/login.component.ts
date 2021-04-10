@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { RegisterService } from '../services/register.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,7 @@ export class LoginComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private _service:RegisterService, private _router:Router) { }
 
   ngOnInit(): void 
   {
@@ -27,7 +29,20 @@ export class LoginComponent implements OnInit {
 
   onLogin()
   {
-
+  this._service.loginEmployee(this.LoginForm.value).subscribe(
+    res=>
+    {
+      this.LoginForm.reset()
+      localStorage.setItem("employeeToken",res['token'])
+      this._router.navigate(['/'])
+      alert("success")
+      
+    },
+    err=>
+    {
+      console.log(err)
+    }
+  );
   }
   get f() { return this.LoginForm.controls; }
 

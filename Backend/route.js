@@ -14,20 +14,21 @@ router.post("/login",async (req,res)=>{
         const user= await ModelEmp.findOne({email:req.body.email})
         if(!user)
         {
-            return res.send("<h2>Sorry user does not exist...!!</h2>")
+            return res.status(404).send({err:"<h2>Sorry user does not exist...!!</h2>"})
         }
 
         const isValid = await bcrypt.compare(req.body.password,user.password)
 
         if(!isValid)
         {
-            res.send("Password wrong...")
+            res.status(404).send({err:"Password wrong..."})
         }
         else
         {
-            const token = jwt.sign({_id:user.id},"privatekey")
-            res.header('auth-token',token)
-            res.send(token)
+            const generatedToken = jwt.sign({_id:user.id},"privatekey")
+            res.header('auth-token',generatedToken)
+            res.status(200).send({res:"Success",token:generatedToken})
+            console.log(token)
         }
     }
     catch(error)
