@@ -12,4 +12,8 @@ export class GetDataService {
   {
     return this.http.get(this.url);
   }
+  getAccessToken()
+  {
+    return localStorage.getItem("employeeToken")
+  }
 }
