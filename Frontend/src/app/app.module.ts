@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { EditTableComponent } from './edit-table/edit-table.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AppComponent,
     RegisterComponent,
     EditTableComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
