@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { LoginComponent } from './login/login.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { AuthGuard } from './Guard/auth.guard';
 
 
 @NgModule({
@@ -30,7 +31,7 @@ import { HomePageComponent } from './home-page/home-page.component';
     NgxPaginationModule
   
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
