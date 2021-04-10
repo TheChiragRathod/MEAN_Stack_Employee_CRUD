@@ -1,4 +1,5 @@
-<div class="m-3 col-md-6">
+<div class="row justify-content-center">
+  <div class="col-md-6 m-3 p-3  shadow p-3 mb-5 bg-light rounded">
 <form [formGroup]="RegisterForm" (ngSubmit)="onRegister()">
     
     <div class="form-group">
@@ -51,4 +52,5 @@
     <button type="submit" [disabled]="RegisterForm.invalid" class="btn btn-primary">Register</button>
   </form>
 
+</div>
 </div>
