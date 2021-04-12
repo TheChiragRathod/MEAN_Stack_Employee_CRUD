@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../services/get-data.service';
 import { RegisterService } from '../services/register.service';
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 
 
 
@@ -15,7 +16,7 @@ export class EditTableComponent implements OnInit {
   Employees;
   p=1;
  
-  constructor(private _getData:GetDataService,private _service:RegisterService) { }
+  constructor(private _getData:GetDataService,private _service:RegisterService, private _router:Router) { }
   
 
   ngOnInit(): void {
@@ -27,10 +28,15 @@ export class EditTableComponent implements OnInit {
           this.Employees.forEach(element => {
             element['isEdit']=false;
           });
-          console.log(this.Employees)
+         
         },
         err=>
         {
+          if(err.status==404)
+          {
+            this._router.navigate(['/login'])
+            localStorage.removeItem("employeeToken")
+          }
           console.log(err)
         }
     );

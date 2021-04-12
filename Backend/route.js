@@ -44,7 +44,7 @@ router.get("/post",auth,(req,res)=>{
     })
 })
 
-router.get("/emp",async (req,res)=>{
+router.get("/emp",auth,async (req,res)=>{
 
     try
     {

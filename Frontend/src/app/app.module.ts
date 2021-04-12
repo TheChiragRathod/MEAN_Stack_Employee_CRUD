@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { EditTableComponent } from './edit-table/edit-table.component';
@@ -11,6 +11,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { LoginComponent } from './login/login.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AuthGuard } from './Guard/auth.guard';
+import { TokenIntercepterService } from './services/token-intercepter.service';
 
 
 @NgModule({
@@ -31,7 +32,12 @@ import { AuthGuard } from './Guard/auth.guard';
     NgxPaginationModule
   
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,
+  {
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenIntercepterService,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
