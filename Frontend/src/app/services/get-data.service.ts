@@ -4,10 +4,12 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class GetDataService {
+  LocalURL="http://localhost:3000/"
+  HerokuURL="https://chiragmean.herokuapp.com/"
 
   constructor(private http:HttpClient) { }
 
-  url="http://localhost:3000/emp";
+  url=this.HerokuURL+"emp";
   getEmployees()
   {
     return this.http.get(this.url);
