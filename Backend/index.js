@@ -5,7 +5,7 @@ const bodyParser= require("body-parser")
 const cors=require('cors')
 
                                     //give database name here...
-mongoose.connect("mongodb+srv://Chirag:mystar3333@cluster0.thc18.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{useNewUrlParser:true,useUnifiedTopology:true}).then(
+mongoose.connect("mongodb+srv://Chirag:mystar3333@cluster0.thc18.mongodb.net/Employee?retryWrites=true&w=majority",{useNewUrlParser:true,useUnifiedTopology:true}).then(
     ()=>
     {
         const app=express();
