@@ -11,7 +11,10 @@ import { RegisterService } from '../services/register.service';
 export class LoginComponent implements OnInit {
 
   LoginForm:FormGroup;
-
+  somthingWrong:boolean=false;
+  EmailWrongError=false
+  PasswordWrongError=false
+  
 
 
   constructor(private _service:RegisterService, private _router:Router) { }
@@ -35,12 +38,21 @@ export class LoginComponent implements OnInit {
       this.LoginForm.reset()
       localStorage.setItem("employeeToken",res['token'])
       this._router.navigate(['/employees'])
-      alert("success")
-      
+      this.EmailWrongError=false
+      this.PasswordWrongError=false
+      this.somthingWrong=false
     },
     err=>
     {
-      console.log(err)
+      if(err.status==400)
+      this.EmailWrongError=true
+      if(err.status==401)
+      this.PasswordWrongError=true
+      if(err.status==404)
+      {
+        this.somthingWrong=true
+      }
+      
     }
   );
   }

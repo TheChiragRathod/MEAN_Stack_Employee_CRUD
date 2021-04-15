@@ -14,14 +14,14 @@ router.post("/login",async (req,res)=>{
         const user= await ModelEmp.findOne({email:req.body.email})
         if(!user)
         {
-            return res.status(404).send({err:"<h2>Sorry user does not exist...!!</h2>"})
+            return res.status(400).send({err:"<h2>Sorry user does not exist...!!</h2>"})
         }
 
         const isValid = await bcrypt.compare(req.body.password,user.password)
 
         if(!isValid)
         {
-            res.status(404).send({err:"Password wrong..."})
+            res.status(401).send({err:"Password wrong..."})
         }
         else
         {
@@ -33,7 +33,7 @@ router.post("/login",async (req,res)=>{
     }
     catch(error)
     {
-        res.status(404).send(error)
+        res.status(404).send({"Error":error})
     }
 })
 
@@ -66,6 +66,7 @@ router.post("/insemp",async (req,res)=>{
         data=null;
         const salt= await bcrypt.genSalt(10)
         const hashedPswd= await bcrypt.hash(req.body.password,salt)
+        ModelEmp.syncIndexes()
         const emp=new ModelEmp(
             {
                 name:req.body.name,
@@ -76,13 +77,16 @@ router.post("/insemp",async (req,res)=>{
             }
         )
         await emp.save()
-        console.log("Done....")
+        
         return res.status(200).send({res:"Success"})
         
     }
     catch(error)
     {
-        res.status(404).send(error)
+        if(error.code==11000)
+            res.status(401).send(error)
+        else
+            res.status(404).send(error)
     }
 
 

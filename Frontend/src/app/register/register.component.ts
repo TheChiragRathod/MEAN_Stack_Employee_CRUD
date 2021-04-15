@@ -10,6 +10,8 @@ import Swal from 'sweetalert2'
 export class RegisterComponent implements OnInit {
 
   RegisterForm:FormGroup;
+  somthingWrong:boolean=false;
+  EmailIsUsedError:boolean=false;
   constructor(private _service:RegisterService) { }
 
   ngOnInit(): void {
@@ -34,10 +36,20 @@ export class RegisterComponent implements OnInit {
       {
         Swal.fire("Good job!", "Registration Successfully Done!", "success");
         this.RegisterForm.reset()
+        this.somthingWrong=false
+        this.EmailIsUsedError=false
       },
       err=>
       {
-          console.log("Some Error :"+err[0])
+        if(err.status==404)
+        {
+          this.somthingWrong=true
+        }
+        if(err.status==401)
+        {
+          this.EmailIsUsedError=true
+        }
+        
       }
       
     )
