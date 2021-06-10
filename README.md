@@ -17,12 +17,11 @@ This is a Employee Management system Project.
 
 Below are the Technologies used for Developing this Project:
 
-- [AngularJS] - For Front-end side!
-- [Twitter Bootstrap] - great UI boilerplate for modern web apps
-- [node.js] - evented I/O for the backend
-- [Express] - fast node.js network app framework
+- [AngularJS](https://angular.io/) - For Front-end side!
+- [Twitter Bootstrap](https://getbootstrap.com/) - great UI boilerplate for modern web apps
+- [node.js](https://nodejs.org) - evented I/O for the backend
+- [Express](https://expressjs.com/) - fast node.js network app framework
 - [MongoDB](https://www.mongodb.com/) Backend Database
-- 
 
 ## Installation
 
