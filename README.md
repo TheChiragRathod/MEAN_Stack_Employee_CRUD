@@ -42,3 +42,21 @@ cd Backend
 npm i
 node index.js
 ```
+
+
+## Run The Project into Local Machine
+
+```sh
+Open any Browser
+```
+
+
+```sh
+type http://localhost:4200
+```
+
+(optional) Third:
+
+```sh
+Check the Project
+```
